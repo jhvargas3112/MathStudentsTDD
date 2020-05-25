@@ -4,10 +4,12 @@ import Exceptions.OperatorOutOfMaximumValueLimitException;
 import Exceptions.OperatorOutOfMinimumValueLimitException;
 import Exceptions.ResultOutOfMaximumValueLimitException;
 import Exceptions.ResultOutOfMinimumValueLimitException;
+import calculator.IntegerArithmeticCalculator;
 
 public class CalculatorValidator {
     private int minimumValueLimit;
     private int maximumValueLimit;
+    private IntegerArithmeticCalculator integerArithmeticCalculator;
 
     public CalculatorValidator(int minimumValueLimit, int maximumValueLimit) {
         this.minimumValueLimit = minimumValueLimit;
