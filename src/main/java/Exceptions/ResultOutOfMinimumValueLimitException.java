@@ -1,12 +1,15 @@
-package Exceptions;
+package exceptions;
 
 public class ResultOutOfMinimumValueLimitException extends Exception {
-    public ResultOutOfMinimumValueLimitException(int minimumValueLimit) {
-        super("Result out of minimum value limit. " +
-                "Minimum value limit is " + minimumValueLimit + ".");
-    }
+  public ResultOutOfMinimumValueLimitException(int minimumValueLimit) {
+    super(
+        "Result out of minimum value limit. "
+            + "Minimum value limit is "
+            + minimumValueLimit
+            + ".");
+  }
 
-    public ResultOutOfMinimumValueLimitException(String msg) {
-        super(msg);
-    }
+  public ResultOutOfMinimumValueLimitException(String msg) {
+    super(msg);
+  }
 }
