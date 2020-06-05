@@ -8,6 +8,7 @@
 	- "2 + 2" es una cadena válida para una expresión de suma. <- HECHO
 	- "25 + 287" es una cadena válida para una expresión de suma. <- HECHO
 	- "25   +   287" es una cadena válida para una expresión de suma (tiene más de un espacio en blanco entre operadores) <- HECHO
+	- "25+287" es una cadena válida para una expresión de suma (no tiene ningún espacio en blanco entre operadores) <- HECHO
 	- El segundo y tercer ejemplo, aplica también para las demás operaciones de resta, multiplicación y división <- HECHO
 	- Una cadeda con más de 2 operandos, por ejemplo "5 + 4 * 2 / 2" es una expresión válida <- HECHO
 # Aceptación - "5 + 4 * 2 / 2", devuelve 9
