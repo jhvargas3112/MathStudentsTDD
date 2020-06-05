@@ -25,8 +25,8 @@ public class MathExpressionTests {
   public void simpleArithmeticExpressionWithAllOperators() {
     char[] operators = new char[]{'+', '-', '*', '/'};
 
-    for (char c : operators) {
-      Assertions.assertTrue(mathOperationExpressionParser.simpleMathExpressionIsValid("25 " + c + " 287"));
+    for (char operator : operators) {
+      Assertions.assertTrue(mathOperationExpressionParser.simpleMathExpressionIsValid("25 " + operator + " 287"));
     }
   }
 
