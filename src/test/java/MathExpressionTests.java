@@ -11,7 +11,7 @@ public class MathExpressionTests {
   }
 
   @Test
-  public void getMathTokens() {
+  public void getArithmeticExpressionTokens() {
     MathToken[] mathTokens = mathOperationExpressionParser.getMathTokens("2 + 2");
 
     Assertions.assertEquals(3, mathTokens.length);
@@ -22,12 +22,26 @@ public class MathExpressionTests {
   }
 
   @Test
-  public void mathExpressionIsValidWithOnlyOneDigitOperands() {
-    Assertions.assertTrue(mathOperationExpressionParser.simpleMathExpressionIsValid("2 + 2"));
+  public void simpleArithmeticExpressionWithAllOperators() {
+    char[] operators = new char[]{'+', '-', '*', '/'};
+
+    for (char c : operators) {
+      Assertions.assertTrue(mathOperationExpressionParser.simpleMathExpressionIsValid("25 " + c + " 287"));
+    }
   }
 
   @Test
-  public void mathExpressionIsValidWithMoreThanOneDigitsOperands() {
-    Assertions.assertTrue(mathOperationExpressionParser.simpleMathExpressionIsValid("25 + 287"));
+  public void simpleArithmeticExpressionWithMoreThanOneBlankSpaces() {
+    Assertions.assertTrue(mathOperationExpressionParser.simpleMathExpressionIsValid("25   +   287"));
+  }
+
+  @Test
+  public void simpleArithmeticExpressionWithOutBlankSpaces() {
+    Assertions.assertTrue(mathOperationExpressionParser.simpleMathExpressionIsValid("25+287"));
+  }
+
+  @Test
+  public void complexArithmeticExpression() {
+    Assertions.assertTrue(mathOperationExpressionParser.complexMathExpressionIsValid("5 + 4 * 2 / 2"));
   }
 }

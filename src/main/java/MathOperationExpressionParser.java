@@ -10,6 +10,11 @@ public class MathOperationExpressionParser {
   }
 
   public boolean simpleMathExpressionIsValid(String mathOperationExpression) {
-    return mathOperationExpression.matches("\\d+ \\+ \\d+");
+    return mathOperationExpression.matches("\\d+\\s*[\\+\\-\\*\\/]{1}\\s*\\d+");
+  }
+
+  public boolean complexMathExpressionIsValid(String mathOperationExpression) {
+    return mathOperationExpression.matches(
+        "^(\\d+\\s*[\\+\\-\\*\\/]{1}\\s*\\d+)(\\s*[\\+\\-\\*\\/]{1}\\s*\\d+)*$");
   }
 }

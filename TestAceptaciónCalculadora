@@ -7,14 +7,15 @@
 	- "2 + 2" tiene un total de 3 elementos, el primero es el valor 2, el segundo es el operador + y el tercero es el valor 2 <- HECHO
 	- "2 + 2" es una cadena válida para una expresión de suma. <- HECHO
 	- "25 + 287" es una cadena válida para una expresión de suma. <- HECHO
-	- El segundo y tercer ejemplo, aplica también para las demás operaciones de resta, multiplicación y división
-	- Una cadeda con más de 2 operandos, por ejemplo "5 + 4 * 2 / 2" es una expresión válida
+	- "25   +   287" es una cadena válida para una expresión de suma (tiene más de un espacio en blanco entre operadores) <- HECHO
+	- El segundo y tercer ejemplo, aplica también para las demás operaciones de resta, multiplicación y división <- HECHO
+	- Una cadeda con más de 2 operandos, por ejemplo "5 + 4 * 2 / 2" es una expresión válida <- HECHO
 # Aceptación - "5 + 4 * 2 / 2", devuelve 9
 # Aceptación - "3 / 2", produce ERROR
 # Aceptación - "* * 4 - 2": produce ERROR
-# Aceptación -"* 4 5 - 2": produce ERROR
-# Aceptación -"* 4 5 - 2 : produce ERROR
-# Aceptación -"*45-2-": produce ERROR
+# Aceptación - "* 4 5 - 2": produce ERROR
+# Aceptación - "* 4 5 - 2 : produce ERROR
+# Aceptación - "*45-2-": produce ERROR
 # Aceptación - "2 + -2" devuelve 0
 # Aceptación - Límite Inferior = -100 <- HECHO
 # Aceptación - Límite Superior = 100 <- HECHO
