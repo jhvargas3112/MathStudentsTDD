@@ -1,11 +1,10 @@
+import calculator.BinaryArithmeticOperation;
+import calculator.IntegerArithmeticCalculator;
+import calculator.ProxyIntegerArithmeticCalculator;
 import exceptions.OperatorOutOfMaximumValueLimitException;
 import exceptions.OperatorOutOfMinimumValueLimitException;
 import exceptions.ResultOutOfMaximumValueLimitException;
 import exceptions.ResultOutOfMinimumValueLimitException;
-import validators.CalculatorValidator;
-import calculator.BinaryArithmeticOperation;
-import calculator.IntegerArithmeticCalculator;
-import calculator.ProxyIntegerArithmeticCalculator;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -13,6 +12,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.platform.runner.JUnitPlatform;
 import org.junit.runner.RunWith;
 import org.mockito.junit.jupiter.MockitoExtension;
+import validators.CalculatorValidator;
 
 @ExtendWith(MockitoExtension.class)
 @RunWith(JUnitPlatform.class)

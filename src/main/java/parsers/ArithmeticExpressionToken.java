@@ -1,7 +1,9 @@
-public class MathToken {
+package parsers;
+
+public class ArithmeticExpressionToken {
   private String token;
 
-  public MathToken(String token) {
+  public ArithmeticExpressionToken(String token) {
     this.token = token;
   }
 
