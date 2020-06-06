@@ -1,57 +1,44 @@
-# Aceptación - "2 + 2", devuelve 4
-	- Sumar 2 al número 2, devuelve 4 <- HECHO
-	- Sumar -5 al número 2, devuelve -3 <- HECHO
-	- Restar 3 al número 5, devuelve 2 <- HECHO
-	- Restar 5 al número 3, devuelve -2 <- HECHO
-# Aceptación - La cadena "2 + 2" tiene dos números y un operador que son ’2’, ’2’ y ’+’
-	- "2 + 2" tiene un total de 3 elementos, el primero es el valor 2, el segundo es el operador + y el tercero es el valor 2 <- HECHO
-	- "2 + 2" es una cadena válida para una expresión de suma. <- HECHO
-	- "25 + 287" es una cadena válida para una expresión de suma. <- HECHO
-	- "25   +   287" es una cadena válida para una expresión de suma (tiene más de un espacio en blanco entre operadores) <- HECHO
-	- "25+287" es una cadena válida para una expresión de suma (no tiene ningún espacio en blanco entre operadores) <- HECHO
-	- El segundo y tercer ejemplo, aplica también para las demás operaciones de resta, multiplicación y división <- HECHO
-	- Una cadeda con más de 2 operandos, por ejemplo "5 + 4 * 2 / 2" es una expresión válida <- HECHO
-# Aceptación - "5 + 4 * 2 / 2", devuelve 9
-# Aceptación - "3 / 2", produce ERROR
-# Aceptación - "* * 4 - 2": produce ERROR
-# Aceptación - "* 4 5 - 2": produce ERROR
-# Aceptación - "* 4 5 - 2 : produce ERROR
-# Aceptación - "*45-2-": produce ERROR
-# Aceptación - "2 + -2" devuelve 0
-# Aceptación - Límite Inferior = -100 <- HECHO
-# Aceptación - Límite Superior = 100 <- HECHO
-# Aceptación - Límite Inferior = -100 y parámetro menor que -100, produce ERROR <- HECHO
-	- Sumar -101 + 100, arroja un excepción <- HECHO
-	- Restar -101 - 100, arroja una excepción <-HECHO
-# Aceptación - Límite Superior = 100 y parámetro mayor que 100, produce ERROR <- HECHO
-	- Sumar -100 + 101, arroja un excepción <- HECHO
-	- Restar -100 - 101, arroja una excepción <-HECHO
-# Aceptación - Límite Inferior = -100 y resultado menor que -100, produce ERROR <- HECHO
-	- Sumar -100 + (-1), arroja un excepción <- HECHO
-	- Restar -100 - 1, arroja un excepción <- HECHO
-# Aceptación - Límite Superior = 100 y resultado mayor que 100, produce ERROR <- HECHO
-	- Sumar 100 + 1, arroja un excepción <- HECHO
-	- Restar 100 - (-1), arroja un excepción <- HECHO
-# Aceptación - Límite Inferior = -100 y valor recuperado de dicho límite igual a -100, produce ÉXITO. <- HECHO
-# Aceptación - Límite Superior = 100 y valor recuperado de dicho límite igual a 100, produce ÉXITO <- HECHO
-# Aceptación - Actualización de límite inferior a -500 y valor recuperado para dicho nuevo límite inferior igual a -500, produce ÉXITO. <- HECHO
-# Aceptación - Actualización de límite superior a 500 y valor recuperado para dicho nuevo límite superior igual a 500, produce ÉXITO. <- HECHO
-
--------------------------------------------------------------------------------
-
-Sumar 2 al número 2, devuelve 4:
-	- Verificar que dependiendo del los parámetros de entrada, el método de sumar devuelve resultados direfentes. <- HECHO
-	- Verificar que el método de sumar puede devolver resultado negativo. Dependiendo del orden en que se pasan los parámetros,
-	  la operación puede arrojar resultados diferentes.
-
-Restar 3 al número 5, devuelve 2:
-	- Dependiendo del los parámetros de entrada, el método de restar devuelve resultados direfentes.
-	- El método de restar puede devolver resultado negativo. Dependiendo del orden en que se pasan losparámetros,
-	  la operación puede arrojar resultados diferentes.
-
------------------------------------------
-
-	- ¿Cuál es el número más pequeñoo que se permite como parámetro?
-	- ¿Y el más grande?
-	- ¿Qué pasa cuando el resultado es menor que el número más pequeño permitido?
-	- ¿Qué pasa cuando el resultado es mayor que el número más grande permitido?
+# Acceptance  - "2 + 2", returns 4
+	- Addition of 2 plus 2 returns 4 <- DONE
+	- Addition of -5 plus 2 returns -3 <- DONE
+	- Subtraction of 5 minus 3 returns 2 <- DONE
+	- Subtraction of 3 minus -5, returns -2 <- DONE
+# Acceptance  - The string "2 + 2" has two numbers and one operator that are ’2’, ’2’ and ’+’
+	- "2 + 2" expression has a total of 3 elements, the first is the value 2, the second is the operator + and the third is the value 2 <- DONE
+	- "25 + 287" is a valid arithmetic expression <- DONE
+	- "25   +   287" is a valid arithmetic expression (it has more than one white space between its operators) <- DONE
+    - "25+287" is a valid arithmetic expression (it hasn' white spaces between operators) <- DONE
+	- "2a7" is a invalid arithmetic expression <- DONE
+	- The second and the third examples, also apply for the subtraction, multiplication and division <- DONE
+	- A more than one operators arithmetic expression, for example "5 + 4 * 2 / 2" is a valid arithmetic expression <- DONE
+	- "5 + 4 **" is a invalid arithmetic expression <- DONE
+	- "*45-2-" is a invalid arithmetic expression <- DONE
+	- "2 + 7 - 2 a 3 b" is a invalid arithmetic expression <- DONE
+	- "-7 + 1" is a valid arithmetic expression <- DONE
+	- "7 - -1" is a valid arithmetic expression <- DONE
+	- "-7 -  -1 * 2 / 3 +  -5" is a valid arithmetic expression <- DONE
+# Acceptance  - "5 + 4 * 2 / 2", returns 9
+# Acceptance  - "3 / 2", returns ERROR
+# Acceptance  - "* * 4 - 2": returns ERROR
+# Acceptance  - "* 4 5 - 2": returns ERROR
+# Acceptance  - "* 4 5 - 2 : returns ERROR
+# Acceptance  - "*45-2-": returns ERROR
+# Acceptance  - "2 + -2" returns 0
+# Acceptance  - Minimum value limit = -100 <- DONE
+# Acceptance  - Maximum value limit = 100 <- DONE
+# Acceptance  - Minimum value limit = -100 y and given parameter smaller than -100, produce ERROR <- DONE
+	- Addition of -101 + 100, returns an exception <- DONE
+	- Subtraction of -101 - 100, returns an exception <-DONE
+# Acceptance  - Maximum value limit = 100 and given parameter greater than 100, returns ERROR <- DONE
+	- Addition -100 + 101, returns un exception <- DONE
+	- Subtraction -100 - 101, returns una exception <-DONE
+# Acceptance  - Minimum value limit = -100 and result smaller than -100, returns ERROR <- DONE
+	- Addition -100 + (-1), returns an exception <- DONE
+	- Subtraction -100 - 1, returns an exception <- DONE
+# Acceptance  - Maximum value limit = 100 and the result greater than 100, returns ERROR <- DONE
+	- Addition 100 + 1, returns an exception <- DONE
+	- Subtraction 100 - (-1), returns an exception <- DONE
+# Acceptance  - Minimum value limit = -100 and retrieved value of this limit equals than -100, returns SUCCESS. <- DONE
+# Acceptance  - Maximum value limit = 100 and retrieved value of this limit equals than 100, returns SUCCESS <- DONE
+# Acceptance  - Minimum value limit upgrade smaller than -500 and retrieved value of this limit equals than -500, returns SUCCESS. <- DONE
+# Acceptance  - Minimum value limit upgrade to 500 and retrieved value of this limit equals than 500, returns SUCCESS. <- DONE

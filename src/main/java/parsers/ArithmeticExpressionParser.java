@@ -1,15 +1,21 @@
 package parsers;
 
-import validators.ArithmeticExpressionValidator;
 import exceptions.InvalidArithmeticExpressionException;
 import org.apache.commons.lang3.StringUtils;
+import validators.ArithmeticExpressionValidator;
 
 import java.util.ArrayList;
 
 public class ArithmeticExpressionParser {
+  private ArithmeticExpressionValidator arithmeticExpressionValidator;
+
+  public ArithmeticExpressionParser(ArithmeticExpressionValidator arithmeticExpressionValidator) {
+    this.arithmeticExpressionValidator = arithmeticExpressionValidator;
+  }
+
   public ArrayList<ArithmeticExpressionToken> parse(String arithmeticExpression)
       throws InvalidArithmeticExpressionException {
-    if (!new ArithmeticExpressionValidator().arithmeticExpressionIsValid(arithmeticExpression)) {
+    if (arithmeticExpressionValidator.arithmeticExpressionIsValid(arithmeticExpression)) {
       throw new InvalidArithmeticExpressionException();
     }
 

@@ -19,7 +19,7 @@ public class ArithmeticExpressionTests {
   @Test
   public void getArithmeticExpressionTokens() throws InvalidArithmeticExpressionException {
     ArrayList<ArithmeticExpressionToken> arithmeticExpressionTokens =
-        new ArithmeticExpressionParser().parse("-5 + 5"); // getArithmeticExpressionTokens
+        new ArithmeticExpressionParser(arithmeticExpressionValidator).parse("-5 + 5");
 
     Assertions.assertEquals(4, arithmeticExpressionTokens.size());
 
@@ -78,7 +78,17 @@ public class ArithmeticExpressionTests {
   }
 
   @Test
-  public void arithmeticExpressionWithNegativeOperands() {
+  public void arithmeticExpressionWithNegativeOperand() {
     Assertions.assertTrue(arithmeticExpressionValidator.arithmeticExpressionIsValid("-7 + 1"));
+  }
+
+  @Test
+  public void arithmeticExpressionWithNegativeOperandAtTheEnd() {
+    Assertions.assertTrue(arithmeticExpressionValidator.arithmeticExpressionIsValid("7 - -1"));
+  }
+
+  @Test
+    public void veryComplexArithmeticExpression() {
+    Assertions.assertTrue(arithmeticExpressionValidator.arithmeticExpressionIsValid("-7 -  -1 * 2 / 3 +  -5"));
   }
 }
