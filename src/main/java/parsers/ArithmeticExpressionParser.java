@@ -15,20 +15,23 @@ public class ArithmeticExpressionParser {
 
   public ArrayList<ArithmeticExpressionToken> parse(String arithmeticExpression)
       throws InvalidArithmeticExpressionException {
-    if (arithmeticExpressionValidator.arithmeticExpressionIsValid(arithmeticExpression)) {
+    if (!arithmeticExpressionValidator.arithmeticExpressionIsValid(arithmeticExpression)) {
       throw new InvalidArithmeticExpressionException();
     }
 
     ArrayList<ArithmeticExpressionToken> arithmeticExpressionTokens = new ArrayList();
 
-    arithmeticExpression = StringUtils.deleteWhitespace(arithmeticExpression);
-    char[] chars = arithmeticExpression.toCharArray();
+    String[] arithmeticExpressionStringTokens = splitArithmeticExpression(arithmeticExpression);
 
-    for (char arithmeticExpressionToken : chars) {
+    for (String arithmeticExpressionStringToken : arithmeticExpressionStringTokens) {
       arithmeticExpressionTokens.add(
-          new ArithmeticExpressionToken(Character.toString(arithmeticExpressionToken)));
+          new ArithmeticExpressionToken(arithmeticExpressionStringToken));
     }
 
     return arithmeticExpressionTokens;
+  }
+
+  public String[] splitArithmeticExpression(String arithmeticExpression) {
+    return StringUtils.splitByCharacterType(StringUtils.deleteWhitespace(arithmeticExpression));
   }
 }

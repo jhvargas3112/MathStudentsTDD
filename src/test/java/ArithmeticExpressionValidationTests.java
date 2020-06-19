@@ -1,32 +1,14 @@
 import validators.ArithmeticExpressionValidator;
-import exceptions.InvalidArithmeticExpressionException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import parsers.ArithmeticExpressionParser;
-import parsers.ArithmeticExpressionToken;
 
-import java.util.ArrayList;
-
-public class ArithmeticExpressionTests {
+public class ArithmeticExpressionValidationTests {
   private ArithmeticExpressionValidator arithmeticExpressionValidator;
 
   @BeforeEach
   public void setup() {
     arithmeticExpressionValidator = new ArithmeticExpressionValidator();
-  }
-
-  @Test
-  public void getArithmeticExpressionTokens() throws InvalidArithmeticExpressionException {
-    ArrayList<ArithmeticExpressionToken> arithmeticExpressionTokens =
-        new ArithmeticExpressionParser(arithmeticExpressionValidator).parse("-5 + 5");
-
-    Assertions.assertEquals(4, arithmeticExpressionTokens.size());
-
-    Assertions.assertEquals("-", arithmeticExpressionTokens.get(0).getToken());
-    Assertions.assertEquals("5", arithmeticExpressionTokens.get(1).getToken());
-    Assertions.assertEquals("+", arithmeticExpressionTokens.get(2).getToken());
-    Assertions.assertEquals("5", arithmeticExpressionTokens.get(3).getToken());
   }
 
   @Test
@@ -88,7 +70,8 @@ public class ArithmeticExpressionTests {
   }
 
   @Test
-    public void veryComplexArithmeticExpression() {
-    Assertions.assertTrue(arithmeticExpressionValidator.arithmeticExpressionIsValid("-7 -  -1 * 2 / 3 +  -5"));
+  public void veryComplexArithmeticExpression() {
+    Assertions.assertTrue(
+        arithmeticExpressionValidator.arithmeticExpressionIsValid("-7 -  -1 * 2 / 3 +  -5"));
   }
 }

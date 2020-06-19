@@ -1,10 +1,11 @@
-# Acceptance  - "2 + 2", returns 4
+# Acceptance: "2 + 2", returns 4
 	- Addition of 2 plus 2 returns 4 <- DONE
 	- Addition of -5 plus 2 returns -3 <- DONE
 	- Subtraction of 5 minus 3 returns 2 <- DONE
 	- Subtraction of 3 minus -5, returns -2 <- DONE
-# Acceptance  - The string "2 + 2" has two numbers and one operator that are ’2’, ’2’ and ’+’
+# Acceptance: The string "2 + 2" has two numbers and one operator that are ’2’, ’2’ and ’+’
 	- "2 + 2" expression has a total of 3 elements, the first is the value 2, the second is the operator + and the third is the value 2 <- DONE
+	- "5 -   88" expression has a total of 3 elements, the first is the value 5, the second is the operator - and the third is the value 88 <-
 	- "25 + 287" is a valid arithmetic expression <- DONE
 	- "25   +   287" is a valid arithmetic expression (it has more than one white space between its operators) <- DONE
     - "25+287" is a valid arithmetic expression (it hasn' white spaces between operators) <- DONE
@@ -17,28 +18,25 @@
 	- "-7 + 1" is a valid arithmetic expression <- DONE
 	- "7 - -1" is a valid arithmetic expression <- DONE
 	- "-7 -  -1 * 2 / 3 +  -5" is a valid arithmetic expression <- DONE
-# Acceptance  - "5 + 4 * 2 / 2", returns 9
-# Acceptance  - "3 / 2", returns ERROR
-# Acceptance  - "* * 4 - 2": returns ERROR
-# Acceptance  - "* 4 5 - 2": returns ERROR
-# Acceptance  - "* 4 5 - 2 : returns ERROR
-# Acceptance  - "*45-2-": returns ERROR
-# Acceptance  - "2 + -2" returns 0
-# Acceptance  - Minimum value limit = -100 <- DONE
-# Acceptance  - Maximum value limit = 100 <- DONE
-# Acceptance  - Minimum value limit = -100 y and given parameter smaller than -100, produce ERROR <- DONE
+# Acceptance: "5 + 4 * 2 / 2", returns 9
+# Acceptance: "3 / 2", returns ERROR
+# Acceptance: "2 - 1++ 3": returns ERROR <- DONE
+# Acceptance: "2 + -2" returns 0
+# Acceptance: Minimum value limit = -100 <- DONE
+# Acceptance: Maximum value limit = 100 <- DONE
+# Acceptance: Minimum value limit = -100 y and given parameter smaller than -100, produce ERROR <- DONE
 	- Addition of -101 + 100, returns an exception <- DONE
 	- Subtraction of -101 - 100, returns an exception <-DONE
-# Acceptance  - Maximum value limit = 100 and given parameter greater than 100, returns ERROR <- DONE
+# Acceptance: Maximum value limit = 100 and given parameter greater than 100, returns ERROR <- DONE
 	- Addition -100 + 101, returns un exception <- DONE
 	- Subtraction -100 - 101, returns una exception <-DONE
-# Acceptance  - Minimum value limit = -100 and result smaller than -100, returns ERROR <- DONE
+# Acceptance: Minimum value limit = -100 and result smaller than -100, returns ERROR <- DONE
 	- Addition -100 + (-1), returns an exception <- DONE
 	- Subtraction -100 - 1, returns an exception <- DONE
-# Acceptance  - Maximum value limit = 100 and the result greater than 100, returns ERROR <- DONE
+# Acceptance: Maximum value limit = 100 and the result greater than 100, returns ERROR <- DONE
 	- Addition 100 + 1, returns an exception <- DONE
 	- Subtraction 100 - (-1), returns an exception <- DONE
-# Acceptance  - Minimum value limit = -100 and retrieved value of this limit equals than -100, returns SUCCESS. <- DONE
-# Acceptance  - Maximum value limit = 100 and retrieved value of this limit equals than 100, returns SUCCESS <- DONE
-# Acceptance  - Minimum value limit upgrade smaller than -500 and retrieved value of this limit equals than -500, returns SUCCESS. <- DONE
-# Acceptance  - Minimum value limit upgrade to 500 and retrieved value of this limit equals than 500, returns SUCCESS. <- DONE
+# Acceptance: Minimum value limit = -100 and retrieved value of this limit equals than -100, returns SUCCESS. <- DONE
+# Acceptance: Maximum value limit = 100 and retrieved value of this limit equals than 100, returns SUCCESS <- DONE
+# Acceptance: Minimum value limit upgrade smaller than -500 and retrieved value of this limit equals than -500, returns SUCCESS. <- DONE
+# Acceptance: Minimum value limit upgrade to 500 and retrieved value of this limit equals than 500, returns SUCCESS. <- DONE
