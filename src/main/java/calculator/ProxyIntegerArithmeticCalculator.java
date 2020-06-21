@@ -38,6 +38,15 @@ public class ProxyIntegerArithmeticCalculator {
     return result;
   }
 
+  public IntegerArithmeticCalculator getIntegerArithmeticCalculator() {
+    return integerArithmeticCalculator;
+  }
+
+  public void setIntegerArithmeticCalculator(
+      IntegerArithmeticCalculator integerArithmeticCalculator) {
+    this.integerArithmeticCalculator = integerArithmeticCalculator;
+  }
+
   public CalculatorValidator getCalculatorValidator() {
     return calculatorValidator;
   }

@@ -34,4 +34,13 @@ public class ArithmeticExpressionParser {
   public String[] splitArithmeticExpression(String arithmeticExpression) {
     return StringUtils.splitByCharacterType(StringUtils.deleteWhitespace(arithmeticExpression));
   }
+
+  public ArithmeticExpressionValidator getArithmeticExpressionValidator() {
+    return arithmeticExpressionValidator;
+  }
+
+  public void setArithmeticExpressionValidator(
+      ArithmeticExpressionValidator arithmeticExpressionValidator) {
+    this.arithmeticExpressionValidator = arithmeticExpressionValidator;
+  }
 }
