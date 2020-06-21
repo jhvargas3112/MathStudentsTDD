@@ -186,4 +186,37 @@ public class ProxyCalculatorTests {
                     proxyIntegerCalculator.getCalculatorValidator().getMaximumValueLimit(),
                     -1));
   }
+
+  @Test
+  public void multiplyReturningPositiveResult() {
+    try {
+      Assertions.assertEquals(
+          56,
+          proxyIntegerCalculator.doBinaryOperation(BinaryArithmeticOperation.MULTIPLICATION, 7, 8));
+    } catch (OperatorOutOfMaximumValueLimitException e) {
+      e.printStackTrace();
+    } catch (OperatorOutOfMinimumValueLimitException e) {
+      e.printStackTrace();
+    } catch (ResultOutOfMinimumValueLimitException e) {
+      e.printStackTrace();
+    } catch (ResultOutOfMaximumValueLimitException e) {
+      e.printStackTrace();
+    }
+  }
+
+  @Test
+  public void quotientReturningPositiveResult() {
+    try {
+      Assertions.assertEquals(
+          2, proxyIntegerCalculator.doBinaryOperation(BinaryArithmeticOperation.QUOTIENT, 6, 3));
+    } catch (OperatorOutOfMaximumValueLimitException e) {
+      e.printStackTrace();
+    } catch (OperatorOutOfMinimumValueLimitException e) {
+      e.printStackTrace();
+    } catch (ResultOutOfMinimumValueLimitException e) {
+      e.printStackTrace();
+    } catch (ResultOutOfMaximumValueLimitException e) {
+      e.printStackTrace();
+    }
+  }
 }

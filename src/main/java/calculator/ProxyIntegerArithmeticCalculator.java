@@ -31,6 +31,13 @@ public class ProxyIntegerArithmeticCalculator {
       case SUBTRACTION:
         result = integerArithmeticCalculator.subtract(operator1, operator2);
         break;
+      case MULTIPLICATION:
+        result = integerArithmeticCalculator.multiply(operator1, operator2);
+        break;
+
+      case QUOTIENT:
+        result = integerArithmeticCalculator.quotient(operator1, operator2);
+        break;
     }
 
     calculatorValidator.validateResultValueLimit(result);

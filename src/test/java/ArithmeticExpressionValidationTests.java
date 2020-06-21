@@ -29,7 +29,7 @@ public class ArithmeticExpressionValidationTests {
 
   @Test
   public void simpleArithmeticExpressionWithOutBlankSpaces() {
-    Assertions.assertTrue(arithmeticExpressionValidator.arithmeticExpressionIsValid("25+287"));
+    Assertions.assertFalse(arithmeticExpressionValidator.arithmeticExpressionIsValid("25+287"));
   }
 
   @Test

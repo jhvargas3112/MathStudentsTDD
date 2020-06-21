@@ -1,8 +1,10 @@
-# Acceptance: "2 + 2", returns 4
+# Acceptance: "2 + 2", returns 4 <- DONE
 	- Addition of 2 plus 2 returns 4 <- DONE
 	- Addition of -5 plus 2 returns -3 <- DONE
 	- Subtraction of 5 minus 3 returns 2 <- DONE
 	- Subtraction of 3 minus -5, returns -2 <- DONE
+	- Multiplication of 7 by 8, returns 56 <- DONE
+	- Quotient of 6 by 3, returns 2 <-
 # Acceptance: The string "2 + 2" has two numbers and one operator that are ’2’, ’2’ and ’+’
 	- "2 + 2" expression has a total of 3 elements, the first is the value 2, the second is the operator + and the third is the value 2 <- DONE
 	- "5 -   88" expression has a total of 3 elements, the first is the value 5, the second is the operator - and the third is the value 88 <-
@@ -18,10 +20,13 @@
 	- "-7 + 1" is a valid arithmetic expression <- DONE
 	- "7 - -1" is a valid arithmetic expression <- DONE
 	- "-7 -  -1 * 2 / 3 +  -5" is a valid arithmetic expression <- DONE
-# Acceptance: "5 + 4 * 2 / 2", returns 9
+# Acceptance: "-7 - -1, returns -6 <- DONE
+# Acceptance: "5 + 4 * 2 / 2", returns 9 <- DONE
+# Acceptance: "-7 - -1 * 2 / 3 + -5", returns -12 <- DONE
+# Acceptance: "9 * 6", returns 54 <- DONE
+# Acceptance: "8 / 4", returns 2 <- DONE
 # Acceptance: "3 / 2", returns ERROR
 # Acceptance: "2 - 1++ 3": returns ERROR <- DONE
-# Acceptance: "2 + -2" returns 0
 # Acceptance: Minimum value limit = -100 <- DONE
 # Acceptance: Maximum value limit = 100 <- DONE
 # Acceptance: Minimum value limit = -100 y and given parameter smaller than -100, produce ERROR <- DONE

@@ -32,7 +32,7 @@ public class ArithmeticExpressionParser {
   }
 
   public String[] splitArithmeticExpression(String arithmeticExpression) {
-    return StringUtils.splitByCharacterType(StringUtils.deleteWhitespace(arithmeticExpression));
+    return StringUtils.split(arithmeticExpression);
   }
 
   public ArithmeticExpressionValidator getArithmeticExpressionValidator() {
