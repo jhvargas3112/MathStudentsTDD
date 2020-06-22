@@ -1,14 +1,11 @@
 import calculator.BinaryArithmeticOperation;
-import calculator.IntegerArithmeticCalculator;
 import calculator.ProxyIntegerArithmeticCalculator;
 import exceptions.*;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import parsers.ArithmeticExpressionParser;
 import parsers.ArithmeticExpressionToken;
-import validators.ArithmeticExpressionValidator;
-import validators.CalculatorValidator;
+import simplifiers.ArithmeticExpressionSimplifier;
 
 import java.util.ArrayList;
 
@@ -17,13 +14,11 @@ import static org.mockito.Mockito.*;
 public class ArithmeticExpressionRunnerTests {
   private ArithmeticExpressionRunner arithmeticExpressionRunner;
 
+  //TODO: set private @Mock attributes to construct the ArithmeticExpressionRunner object.
+
   @BeforeEach
   public void setup() {
-    arithmeticExpressionRunner =
-        new ArithmeticExpressionRunner(
-            new ArithmeticExpressionParser(new ArithmeticExpressionValidator()),
-            new ProxyIntegerArithmeticCalculator(
-                new IntegerArithmeticCalculator(), new CalculatorValidator(-100, 100)));
+    arithmeticExpressionRunner = new ArithmeticExpressionRunner();
   }
 
   @Test
@@ -33,7 +28,8 @@ public class ArithmeticExpressionRunnerTests {
           OperatorOutOfMaximumValueLimitException {
     ProxyIntegerArithmeticCalculator proxyIntegerArithmeticCalculator =
         mock(ProxyIntegerArithmeticCalculator.class);
-    ArithmeticExpressionParser arithmeticExpressionParser = mock(ArithmeticExpressionParser.class);
+    ArithmeticExpressionSimplifier arithmeticExpressionSimplifier =
+        mock(ArithmeticExpressionSimplifier.class);
 
     String arithmeticExpression = "2 + 2";
 
@@ -43,18 +39,21 @@ public class ArithmeticExpressionRunnerTests {
     arithmeticExpressionTokens.add(new ArithmeticExpressionToken("+"));
     arithmeticExpressionTokens.add(new ArithmeticExpressionToken("2"));
 
-    when(arithmeticExpressionParser.parse(arithmeticExpression))
+    when(arithmeticExpressionSimplifier.simplifyDoingMultiplicationsAndQuotients(
+            arithmeticExpression))
         .thenReturn(arithmeticExpressionTokens);
 
-    arithmeticExpressionRunner.setArithmeticExpressionParser(arithmeticExpressionParser);
+    arithmeticExpressionRunner.setArithmeticExpressionSimplifier(arithmeticExpressionSimplifier);
     arithmeticExpressionRunner.setProxyIntegerArithmeticCalculator(
         proxyIntegerArithmeticCalculator);
 
     arithmeticExpressionRunner.run(arithmeticExpression);
 
+    verify(arithmeticExpressionSimplifier)
+        .simplifyDoingMultiplicationsAndQuotients(arithmeticExpression);
+
     verify(proxyIntegerArithmeticCalculator)
         .doBinaryOperation(BinaryArithmeticOperation.ADDITION, 2, 2);
-    verify(arithmeticExpressionParser).parse(arithmeticExpression);
   }
 
   @Test
@@ -76,16 +75,16 @@ public class ArithmeticExpressionRunnerTests {
   @Test
   public void runSimpleMultiplicationArithmeticExpression()
       throws InvalidArithmeticExpressionException, ResultOutOfMinimumValueLimitException,
-      OperatorOutOfMinimumValueLimitException, ResultOutOfMaximumValueLimitException,
-      OperatorOutOfMaximumValueLimitException {
+          OperatorOutOfMinimumValueLimitException, ResultOutOfMaximumValueLimitException,
+          OperatorOutOfMaximumValueLimitException {
     Assertions.assertEquals(54, arithmeticExpressionRunner.run("9 * 6"));
   }
 
   @Test
   public void runSimpleQuotientArithmeticExpression()
       throws InvalidArithmeticExpressionException, ResultOutOfMinimumValueLimitException,
-      OperatorOutOfMinimumValueLimitException, ResultOutOfMaximumValueLimitException,
-      OperatorOutOfMaximumValueLimitException {
+          OperatorOutOfMinimumValueLimitException, ResultOutOfMaximumValueLimitException,
+          OperatorOutOfMaximumValueLimitException {
     Assertions.assertEquals(2, arithmeticExpressionRunner.run("8 / 4"));
   }
 

@@ -45,3 +45,19 @@
 # Acceptance: Maximum value limit = 100 and retrieved value of this limit equals than 100, returns SUCCESS <- DONE
 # Acceptance: Minimum value limit upgrade smaller than -500 and retrieved value of this limit equals than -500, returns SUCCESS. <- DONE
 # Acceptance: Minimum value limit upgrade to 500 and retrieved value of this limit equals than 500, returns SUCCESS. <- DONE
+
+* REQUISITO: las expresiones aritméticas se pueden simplificar por precedencia de signos.
+    # Acceptance: Intentar simplificar una expresión aritmética no válida produce ERROR
+        - Intentar simplificar "2 - 1++ 3", returns ERROR
+        - Intentar simplificar "2a7", returns ERROR
+    # Acceptance: Para simplificar una expresión aritmética, se puede tener en cuenta solo las multiplicaciones
+        - Simplificar "5 + 4 * 3" returns an Array of {"5", "+", "12"} <- DONE
+        - Simplificar "5 + 4 * 3 - 2 / 2" returns an Array of {"5", "+", "12", "-", "2" "/", "2"} <- DONE
+    # Acceptance: Para simplificar una expresión aritmética, se puede tener en cuenta tanto las multiplicaciones como las divisiones
+        - Simplificar "5 + 4 * 2 / 2" returns an Array of {"5", "+", "4"} <- DONE
+        - Simplificar "5 + 4 * 2 / 2 - 5 * 3 * 7" returns an Array of {"5", "+", "4", "-", "105"} <- DONE
+    ¿Qué pasa si se quiere simplicar una expresion sin multiplicaciones ni divisiones?
+    # Acceptance: simplicar una expresion sin multiplicaciones ni divisiones, devuelve la misma expresión
+        - Intentar simplificar "5 + 4 - 2 + 2 - 5 + 3 - 7" returns an Array of {"5", "+" "4", "-", "2", "+", "2", "-", "5", "+", "3", "-", "7"} <- DONE
+
+
