@@ -4,6 +4,7 @@ import exceptions.*;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mock;
 import parsers.ArithmeticExpressionToken;
 import simplifiers.ArithmeticExpressionSimplifier;
 
@@ -14,15 +15,13 @@ import static org.mockito.Mockito.*;
 public class ArithmeticExpressionRunnerTests {
   private ArithmeticExpressionRunner arithmeticExpressionRunner;
 
-  //TODO: set private @Mock attributes to construct the ArithmeticExpressionRunner object.
-
   @BeforeEach
   public void setup() {
     arithmeticExpressionRunner = new ArithmeticExpressionRunner();
   }
 
   @Test
-  public void runAdditionActionWithParserAndProxyCalculator()
+  public void runAdditionActionWithArithmeticExpressionSimplifierAndProxyCalculator()
       throws InvalidArithmeticExpressionException, ResultOutOfMinimumValueLimitException,
           OperatorOutOfMinimumValueLimitException, ResultOutOfMaximumValueLimitException,
           OperatorOutOfMaximumValueLimitException {
@@ -48,9 +47,6 @@ public class ArithmeticExpressionRunnerTests {
         proxyIntegerArithmeticCalculator);
 
     arithmeticExpressionRunner.run(arithmeticExpression);
-
-    verify(arithmeticExpressionSimplifier)
-        .simplifyDoingMultiplicationsAndQuotients(arithmeticExpression);
 
     verify(proxyIntegerArithmeticCalculator)
         .doBinaryOperation(BinaryArithmeticOperation.ADDITION, 2, 2);
