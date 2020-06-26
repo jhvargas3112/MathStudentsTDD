@@ -4,9 +4,8 @@ import exceptions.*;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mock;
+import parsers.ArithmeticExpressionParser;
 import parsers.ArithmeticExpressionToken;
-import simplifiers.ArithmeticExpressionSimplifier;
 
 import java.util.ArrayList;
 
@@ -27,8 +26,8 @@ public class ArithmeticExpressionRunnerTests {
           OperatorOutOfMaximumValueLimitException {
     ProxyIntegerArithmeticCalculator proxyIntegerArithmeticCalculator =
         mock(ProxyIntegerArithmeticCalculator.class);
-    ArithmeticExpressionSimplifier arithmeticExpressionSimplifier =
-        mock(ArithmeticExpressionSimplifier.class);
+    ArithmeticExpressionParser arithmeticExpressionParser =
+        mock(ArithmeticExpressionParser.class);
 
     String arithmeticExpression = "2 + 2";
 
@@ -38,11 +37,11 @@ public class ArithmeticExpressionRunnerTests {
     arithmeticExpressionTokens.add(new ArithmeticExpressionToken("+"));
     arithmeticExpressionTokens.add(new ArithmeticExpressionToken("2"));
 
-    when(arithmeticExpressionSimplifier.simplifyDoingMultiplicationsAndQuotients(
+    when(arithmeticExpressionParser.parse(
             arithmeticExpression))
         .thenReturn(arithmeticExpressionTokens);
 
-    arithmeticExpressionRunner.setArithmeticExpressionSimplifier(arithmeticExpressionSimplifier);
+    arithmeticExpressionRunner.setArithmeticExpressionParser(arithmeticExpressionParser);
     arithmeticExpressionRunner.setProxyIntegerArithmeticCalculator(
         proxyIntegerArithmeticCalculator);
 

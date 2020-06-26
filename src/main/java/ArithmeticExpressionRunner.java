@@ -4,14 +4,14 @@ import calculator.ProxyIntegerArithmeticCalculator;
 import exceptions.*;
 import parsers.ArithmeticExpressionParser;
 import parsers.ArithmeticExpressionToken;
-import simplifiers.ArithmeticExpressionSimplifier;
+import parsers.MathOperator;
 import validators.ArithmeticExpressionValidator;
 import validators.CalculatorValidator;
 
 import java.util.ArrayList;
 
 public class ArithmeticExpressionRunner {
-  private ArithmeticExpressionSimplifier arithmeticExpressionSimplifier;
+  private ArithmeticExpressionParser arithmeticExpressionParser;
   private ProxyIntegerArithmeticCalculator proxyIntegerArithmeticCalculator;
 
   public ArithmeticExpressionRunner() {
@@ -20,55 +20,43 @@ public class ArithmeticExpressionRunner {
             new IntegerArithmeticCalculator(),
             new CalculatorValidator(Integer.MIN_VALUE, Integer.MAX_VALUE));
 
-    arithmeticExpressionSimplifier =
-        new ArithmeticExpressionSimplifier(
-            new ArithmeticExpressionParser(new ArithmeticExpressionValidator()),
-            proxyIntegerArithmeticCalculator);
+    arithmeticExpressionParser =
+        new ArithmeticExpressionParser(new ArithmeticExpressionValidator());
   }
 
   public int run(String arithmeticExpression)
       throws InvalidArithmeticExpressionException, ResultOutOfMinimumValueLimitException,
           OperatorOutOfMinimumValueLimitException, ResultOutOfMaximumValueLimitException,
           OperatorOutOfMaximumValueLimitException {
+
     ArrayList<ArithmeticExpressionToken> arithmeticExpressionTokens =
-        arithmeticExpressionSimplifier.simplifyDoingMultiplicationsAndQuotients(
-            arithmeticExpression);
+        arithmeticExpressionParser.parse(arithmeticExpression);
 
-    int result = arithmeticExpressionTokens.get(0).intValue();
+    while (arithmeticExpressionTokens.size() > 1) {
+      MathOperator mathOperator =
+          arithmeticExpressionParser.getMaxPrecedenceOperator(arithmeticExpressionTokens);
 
-    int i = 1;
+      int leftIntegerValue = arithmeticExpressionTokens.get(mathOperator.getIndex() - 1).intValue();
+      int rightIntegerValue =
+          arithmeticExpressionTokens.get(mathOperator.getIndex() + 1).intValue();
 
-    while (i <= arithmeticExpressionTokens.size() - 2) {
-      ArithmeticExpressionToken arithmeticExpressionToken = arithmeticExpressionTokens.get(i);
+      int result = mathOperator.resolve(leftIntegerValue, rightIntegerValue);
 
-      if (arithmeticExpressionToken.isAdditionOperator()) {
-        result =
-            proxyIntegerArithmeticCalculator.doBinaryOperation(
-                BinaryArithmeticOperation.ADDITION,
-                result,
-                arithmeticExpressionTokens.get(i + 1).intValue());
-
-      } else {
-        result =
-            proxyIntegerArithmeticCalculator.doBinaryOperation(
-                BinaryArithmeticOperation.SUBTRACTION,
-                result,
-                arithmeticExpressionTokens.get(i + 1).intValue());
-      }
-
-      i = i + 2;
+      arithmeticExpressionTokens.set(
+          mathOperator.getIndex() - 1, new ArithmeticExpressionToken(String.valueOf(result)));
+      arithmeticExpressionTokens.remove(mathOperator.getIndex());
+      arithmeticExpressionTokens.remove(mathOperator.getIndex());
     }
 
-    return result;
+    return Integer.parseInt(arithmeticExpressionTokens.get(0).getToken());
   }
 
-  public ArithmeticExpressionSimplifier getArithmeticExpressionSimplifier() {
-    return arithmeticExpressionSimplifier;
+  public ArithmeticExpressionParser getArithmeticExpressionParser() {
+    return arithmeticExpressionParser;
   }
 
-  public void setArithmeticExpressionSimplifier(
-      ArithmeticExpressionSimplifier arithmeticExpressionSimplifier) {
-    this.arithmeticExpressionSimplifier = arithmeticExpressionSimplifier;
+  public void setArithmeticExpressionParser(ArithmeticExpressionParser arithmeticExpressionParser) {
+    this.arithmeticExpressionParser = arithmeticExpressionParser;
   }
 
   public ProxyIntegerArithmeticCalculator getProxyIntegerArithmeticCalculator() {
