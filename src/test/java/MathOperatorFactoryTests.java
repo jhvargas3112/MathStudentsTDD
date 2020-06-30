@@ -1,3 +1,4 @@
+import exceptions.InvalidMathOperatorException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import parsers.ArithmeticExpressionToken;
@@ -6,30 +7,30 @@ import parsers.MathOperatorFactory;
 
 public class MathOperatorFactoryTests {
   @Test
-  public void multiplicationOperatorPrecedenceIsSetted() {
-    MathOperator mathOperator = MathOperatorFactory.create(new ArithmeticExpressionToken("*"));
-
-    Assertions.assertEquals(2, mathOperator.getPrecedence());
-  }
-
-  @Test
-  public void quotientOperatorPrecedenceIsSetted() {
-    MathOperator mathOperator = MathOperatorFactory.create(new ArithmeticExpressionToken("/"));
-
-    Assertions.assertEquals(1, mathOperator.getPrecedence());
-  }
-
-  @Test
-  public void additionOperatorPrecedenceIsSetted() {
+  public void additionOperatorPrecedenceIsSetted() throws InvalidMathOperatorException {
     MathOperator mathOperator = MathOperatorFactory.create(new ArithmeticExpressionToken("+"));
 
     Assertions.assertEquals(0, mathOperator.getPrecedence());
   }
 
   @Test
-  public void subtractionOperatorPrecedenceIsSetted() {
+  public void subtractionOperatorPrecedenceIsSetted() throws InvalidMathOperatorException {
     MathOperator mathOperator = MathOperatorFactory.create(new ArithmeticExpressionToken("-"));
 
     Assertions.assertEquals(0, mathOperator.getPrecedence());
+  }
+
+  @Test
+  public void multiplicationOperatorPrecedenceIsSetted() throws InvalidMathOperatorException {
+    MathOperator mathOperator = MathOperatorFactory.create(new ArithmeticExpressionToken("*"));
+
+    Assertions.assertEquals(2, mathOperator.getPrecedence());
+  }
+
+  @Test
+  public void quotientOperatorPrecedenceIsSetted() throws InvalidMathOperatorException {
+    MathOperator mathOperator = MathOperatorFactory.create(new ArithmeticExpressionToken("/"));
+
+    Assertions.assertEquals(1, mathOperator.getPrecedence());
   }
 }

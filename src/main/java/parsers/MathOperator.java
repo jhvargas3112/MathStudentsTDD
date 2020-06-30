@@ -1,32 +1,22 @@
 package parsers;
 
-import org.apache.commons.lang3.StringUtils;
+import calculator.ProxyIntegerArithmeticCalculator;
+import exceptions.OperatorOutOfMaximumValueLimitException;
+import exceptions.OperatorOutOfMinimumValueLimitException;
+import exceptions.ResultOutOfMaximumValueLimitException;
+import exceptions.ResultOutOfMinimumValueLimitException;
 
-public class MathOperator {
+public abstract class MathOperator {
   private String token;
   private int precedence;
   private int index;
 
-  public MathOperator(String token, int precedence) {
-    this.token = token;
-    this.precedence = precedence;
-  }
-
-  public int resolve(int leftValue, int rightValue) {
-    int result = 0;
-
-    if (StringUtils.equals(token, "*")) {
-      result = leftValue * rightValue;
-    } else if (StringUtils.equals(token, "/")) {
-      result = leftValue / rightValue;
-    } else if (StringUtils.equals(token, "+")) {
-      result = leftValue + rightValue;
-    } else if (StringUtils.equals(token, "-")) {
-      result = leftValue - rightValue;
-    }
-
-    return result;
-  }
+  public abstract int resolve(
+      int leftValue,
+      int rightValue,
+      ProxyIntegerArithmeticCalculator proxyIntegerArithmeticCalculator)
+      throws ResultOutOfMinimumValueLimitException, OperatorOutOfMinimumValueLimitException,
+          ResultOutOfMaximumValueLimitException, OperatorOutOfMaximumValueLimitException;
 
   public String getToken() {
     return token;

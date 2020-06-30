@@ -1,17 +1,25 @@
 package parsers;
 
+import exceptions.InvalidMathOperatorException;
 import org.apache.commons.lang3.StringUtils;
 
 public class MathOperatorFactory {
-  public static MathOperator create(ArithmeticExpressionToken arithmeticExpressionToken) {
+  public static MathOperator create(ArithmeticExpressionToken arithmeticExpressionToken)
+      throws InvalidMathOperatorException {
     MathOperator mathOperator = null;
 
     String operatorToken = arithmeticExpressionToken.getToken();
 
-    if (StringUtils.equals(operatorToken, "*") || StringUtils.equals(operatorToken, "/")) {
-      mathOperator = new MathOperator(operatorToken, 2);
+    if (StringUtils.equals(operatorToken, "+")) {
+      mathOperator = new AdditionOperator();
+    } else if (StringUtils.equals(operatorToken, "-")) {
+      mathOperator = new SubtractionOperator();
+    } else if (StringUtils.equals(operatorToken, "*")) {
+      mathOperator = new MultiplicationOperator();
+    } else if (StringUtils.equals(operatorToken, "/")) {
+      mathOperator = new QuotientOperator();
     } else {
-      mathOperator = new MathOperator(operatorToken, 0);
+      throw new InvalidMathOperatorException();
     }
 
     return mathOperator;

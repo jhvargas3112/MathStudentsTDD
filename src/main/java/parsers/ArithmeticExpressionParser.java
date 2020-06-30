@@ -1,6 +1,7 @@
 package parsers;
 
 import exceptions.InvalidArithmeticExpressionException;
+import exceptions.InvalidMathOperatorException;
 import org.apache.commons.lang3.StringUtils;
 import validators.ArithmeticExpressionValidator;
 
@@ -32,8 +33,9 @@ public class ArithmeticExpressionParser {
   }
 
   public MathOperator getMaxPrecedenceOperator(
-      ArrayList<ArithmeticExpressionToken> arithmeticExpressionTokens) {
-    int precedence = 0;
+      ArrayList<ArithmeticExpressionToken> arithmeticExpressionTokens)
+      throws InvalidMathOperatorException {
+    int precedence = -1;
     MathOperator maxPrecedenceOperator = null;
 
     int index = -1;
@@ -43,13 +45,10 @@ public class ArithmeticExpressionParser {
 
       if (arithmeticExpressionToken.isOperator()) {
         MathOperator mathOperator = MathOperatorFactory.create(arithmeticExpressionToken);
-        if (mathOperator.getPrecedence() >= precedence) {
+        if (mathOperator.getPrecedence() > precedence) {
           precedence = mathOperator.getPrecedence();
           maxPrecedenceOperator = mathOperator;
           maxPrecedenceOperator.setIndex(index);
-
-          // FIXME: left to right tour is mandatory
-          break;
         }
       }
     }

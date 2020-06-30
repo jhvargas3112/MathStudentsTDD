@@ -1,3 +1,4 @@
+import exceptions.InvalidMathOperatorException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import parsers.ArithmeticExpressionParser;
@@ -9,7 +10,7 @@ import java.util.ArrayList;
 
 public class OperatorPrecedenseTests {
   @Test
-  public void getMaxPrecedence() {
+  public void getMaxPrecedence() throws InvalidMathOperatorException {
     ArithmeticExpressionParser arithmeticExpressionParser =
         new ArithmeticExpressionParser(new ArithmeticExpressionValidator());
 

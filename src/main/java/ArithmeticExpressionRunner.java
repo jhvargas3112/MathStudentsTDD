@@ -26,8 +26,8 @@ public class ArithmeticExpressionRunner {
 
   public int run(String arithmeticExpression)
       throws InvalidArithmeticExpressionException, ResultOutOfMinimumValueLimitException,
-          OperatorOutOfMinimumValueLimitException, ResultOutOfMaximumValueLimitException,
-          OperatorOutOfMaximumValueLimitException {
+      OperatorOutOfMinimumValueLimitException, ResultOutOfMaximumValueLimitException,
+      OperatorOutOfMaximumValueLimitException, InvalidMathOperatorException {
 
     ArrayList<ArithmeticExpressionToken> arithmeticExpressionTokens =
         arithmeticExpressionParser.parse(arithmeticExpression);
@@ -40,15 +40,28 @@ public class ArithmeticExpressionRunner {
       int rightIntegerValue =
           arithmeticExpressionTokens.get(mathOperator.getIndex() + 1).intValue();
 
-      int result = mathOperator.resolve(leftIntegerValue, rightIntegerValue);
+      int result =
+          mathOperator.resolve(
+              leftIntegerValue,
+              rightIntegerValue,
+              new ProxyIntegerArithmeticCalculator(
+                  new IntegerArithmeticCalculator(),
+                  new CalculatorValidator(Integer.MIN_VALUE, Integer.MAX_VALUE)));
 
-      arithmeticExpressionTokens.set(
-          mathOperator.getIndex() - 1, new ArithmeticExpressionToken(String.valueOf(result)));
-      arithmeticExpressionTokens.remove(mathOperator.getIndex());
-      arithmeticExpressionTokens.remove(mathOperator.getIndex());
+      replaceArithmeticExpressionTokensWithResult(
+          arithmeticExpressionTokens, mathOperator.getIndex(), result);
     }
 
     return Integer.parseInt(arithmeticExpressionTokens.get(0).getToken());
+  }
+
+  private void replaceArithmeticExpressionTokensWithResult(
+      ArrayList<ArithmeticExpressionToken> arithmeticExpressionTokens, int index, int result) {
+    arithmeticExpressionTokens.set(
+        index - 1, new ArithmeticExpressionToken(String.valueOf(result)));
+
+    arithmeticExpressionTokens.remove(index);
+    arithmeticExpressionTokens.remove(index);
   }
 
   public ArithmeticExpressionParser getArithmeticExpressionParser() {
