@@ -60,8 +60,15 @@
     # Acceptance: simplicar una expresion sin multiplicaciones ni divisiones, devuelve la misma expresión
         - Intentar simplificar "5 + 4 - 2 + 2 - 5 + 3 - 7" returns an Array of {"5", "+" "4", "-", "2", "+", "2", "-", "5", "+", "3", "-", "7"} <- DONE
 
-* REQUISITO: precedencia entre operadores,
-    # Comprobar quien tiene mayor precedencia en una expresión aritmética
+* Historia de usuario: precedencia entre operadores,
+    # Acceptance: Comprobar quien tiene mayor precedencia en una expresión aritmética
         - En la expresión "3 + 2 * 2" el operador * es el que tiene mayor precedencia. <- DONE
+
+* Historia de usuario: operaciones con paréntesis
+    # Acceptance - "(2 + 2) * (3 + 1)", devuelve 16
+        - "(2 + 2)" se traduce en la expresión "2 + 2" <- DONE
+        - "((2) + 2)" se traduce en la expresión "2 + 2" <- DONE
+        - "((2 + 1) + 2)" se traduce en 3 + 2 <-
+        - "(2 + " produce una excepción
 
 

@@ -6,6 +6,7 @@ import org.apache.commons.lang3.StringUtils;
 import validators.ArithmeticExpressionValidator;
 
 import java.util.ArrayList;
+import java.util.Stack;
 
 public class ArithmeticExpressionParser {
   private ArithmeticExpressionValidator arithmeticExpressionValidator;
@@ -30,6 +31,39 @@ public class ArithmeticExpressionParser {
     }
 
     return arithmeticExpressionTokens;
+  }
+
+  public ArrayList<String> getExpressions(String arithmeticExpression) {
+    char[] arithmeticExpressionStringTokens = arithmeticExpression.toCharArray();
+
+    ArrayList<String> expressions = new ArrayList<>();
+
+    Stack<Character> parenthesis = new Stack<>();
+
+    for (Character token : arithmeticExpressionStringTokens) {
+      int actualExpressionIndex = expressions.size() - 1;
+      if (token.equals('(')) {
+        parenthesis.push(token);
+        expressions.add(new String());
+      } else if (token.equals(')')) {
+        parenthesis.pop();
+      } else {
+        expressions.set(
+            actualExpressionIndex, expressions.get(actualExpressionIndex).concat(token.toString()));
+      }
+    }
+
+    clearEmptyExpressions(expressions);
+
+    return expressions;
+  }
+
+  private void clearEmptyExpressions(ArrayList<String> expressions) {
+    for (String expression : expressions) {
+      if (StringUtils.isBlank(expression)) {
+        expressions.remove(expression);
+      }
+    }
   }
 
   public MathOperator getMaxPrecedenceOperator(
